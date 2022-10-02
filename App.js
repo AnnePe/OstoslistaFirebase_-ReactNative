@@ -84,7 +84,7 @@ onValue(itemsRef, (snapshot) => {
         style={{marginLeft : "5%"}}
         keyExtractor={item => item.id} 
         renderItem={({item}) => <View style={styles.listcontainer}><Text style={{fontSize: 18}}>{item.product}, {item.amount} </Text>
-        <Text style={{fontSize: 18, color: '#0000ff'}} onPress={() => deleteItem(item.key)}> bought</Text></View>} 
+        <Text style={{fontSize: 18, color: '#0000ff'}} onPress={() => deleteItem(item.key)}> delete</Text></View>} 
         data={ostos} 
         ItemSeparatorComponent={listSeparator} 
       />      
