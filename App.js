@@ -32,12 +32,14 @@ const saveItem = () => {    //viittaus ja mitä viedään
             { 'product': product, 'amount': amount }); //olio
 }
 
-const deleteItem = () => {    //viittaus ja mitä viedään
-  console.log ('deleteItem', items);
- /* remove(  
-    ref(database, 'ostot/'), //viitaus
-        { 'key': items }); //olio*/
+const deleteItem = (item) => {    //viittaus ja mitä poistetaan
+ // console.log ('deleteItem', items);
+ // console.log ('deleteItem',  item);
+  remove(ref(database, 'ostot/'+item));
+
 }
+
+ 
 
 useEffect(() => 
 {const itemsRef = ref(database, 'ostot/');  
@@ -81,8 +83,8 @@ onValue(itemsRef, (snapshot) => {
       <FlatList 
         style={{marginLeft : "5%"}}
         keyExtractor={item => item.id} 
-        renderItem={({item}) => <View style={styles.listcontainer}><Text style={{fontSize: 18}}>{item.product}, {item.amount}</Text>
-        <Text style={{fontSize: 18, color: '#0000ff'}} onPress={() => deleteItem(item.id)}> bought</Text></View>} 
+        renderItem={({item}) => <View style={styles.listcontainer}><Text style={{fontSize: 18}}>{item.product}, {item.amount} </Text>
+        <Text style={{fontSize: 18, color: '#0000ff'}} onPress={() => deleteItem(item.key)}> bought</Text></View>} 
         data={ostos} 
         ItemSeparatorComponent={listSeparator} 
       />      
